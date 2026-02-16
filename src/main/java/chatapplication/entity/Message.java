@@ -9,7 +9,6 @@ import java.time.LocalDateTime;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-
 public class Message {
     private String sender;
     private String content;
