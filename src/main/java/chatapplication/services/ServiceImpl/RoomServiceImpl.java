@@ -11,12 +11,13 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 @Service
-@NoArgsConstructor
-@AllArgsConstructor
-@RequiredArgsConstructor
 public class RoomServiceImpl implements RoomService {
 
     private RoomRepository roomRepository;
+
+    RoomServiceImpl(RoomRepository roomRepository){
+        this.roomRepository = roomRepository;
+    }
 
     @Override
     public Room findRoom(String roomId) {
@@ -31,7 +32,7 @@ public class RoomServiceImpl implements RoomService {
     public Room makeRoom(RoomDto roomDto) {
 
         try {
-            if(roomRepository.findByRoomId(roomDto.getRoomId()) != null) {
+            if(roomRepository.findByRoomId(roomDto.getRoomId()) == null) {
                 Room room = new Room();
                 room.setRoomId(roomDto.getRoomId());
 

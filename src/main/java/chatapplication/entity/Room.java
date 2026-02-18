@@ -17,10 +17,12 @@ public class Room {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(nullable = false)
-    private String id;
+    private Long id;
 
     private String roomId;
 
+    @ElementCollection
+    @CollectionTable(name = "messages", joinColumns = @JoinColumn(name = "room_id"))
     private List<Message> messageList = new ArrayList<>();
 
 }

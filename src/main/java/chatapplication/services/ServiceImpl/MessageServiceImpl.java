@@ -13,12 +13,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Service
-@AllArgsConstructor
-@NoArgsConstructor
-@RequiredArgsConstructor
-public class MassageServiceImpl implements MessageService {
+public class MessageServiceImpl implements MessageService {
 
-    private RoomService roomService;
+    private RoomServiceImpl roomService;
+
+    MessageServiceImpl(RoomServiceImpl roomService){
+        this.roomService = roomService;
+    }
 
     @Override
     public List<Message> getMessage(String roomId, int page, int size) {
